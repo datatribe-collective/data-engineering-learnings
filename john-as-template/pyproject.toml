@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "john-capstone"
+version = "0.1.0"
+description = "John's capstone project using pandas and BigQuery"
+authors = ["John <john@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pandas = "^2.2.0"
+pandas-gbq = "^0.20.0"
+google-cloud-bigquery = "^3.12.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
