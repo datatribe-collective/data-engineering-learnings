@@ -21,6 +21,7 @@ COVID-19 has affected countries differently over time. My goal was to analyze an
 
 *Before make*
 
+```
 natalie_meintjes/
 ├── Makefile
 ├── README.md
@@ -33,10 +34,10 @@ natalie_meintjes/
 ├── output
 └── scripts
     ├── clean_data.py
-    └── run_notebook.py
-
+    └── run_notebook.py 
+```
 *After make*
-
+```
 natalie_meintjes/
 ├── Makefile
 ├── README.md
@@ -50,7 +51,7 @@ natalie_meintjes/
 └── scripts
     ├── clean_data.py
     └── run_notebook.py
-
+```
 
 ## Tools
 
