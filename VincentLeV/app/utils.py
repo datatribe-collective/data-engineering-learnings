@@ -10,7 +10,7 @@ def rank_dataframe(df: pd.DataFrame, rank_column_name: str = "Rank") -> pd.DataF
   )
 
 def get_base_data_url():
-  if "HOME" in os.environ and "streamlit" in os.environ["HOME"]:
+  if os.getenv("IS_STREAMLIT_CLOUD") == "true":
     BASE_DATA_URL = os.path.join(os.getcwd(), "VincentLeV", "app", "data", "banned_books")
   else:
     BASE_DATA_URL = os.path.join(os.getcwd(), "data", "banned_books")
