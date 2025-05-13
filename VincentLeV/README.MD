@@ -45,7 +45,15 @@ VincentLeV/
 └── stop.sh                          # App end script
 ```
 
-## Setup and Run
+## Data Visualization
+
+Streamlit app is deployed here
+
+```
+https://vincent-banned-books.streamlit.app/
+```
+
+## Setup and Run Locally
 
 1. In the terminal, run these commands
    ```bash
