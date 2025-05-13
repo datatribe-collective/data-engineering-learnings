@@ -10,5 +10,8 @@ def rank_dataframe(df: pd.DataFrame, rank_column_name: str = "Rank") -> pd.DataF
   )
 
 def get_base_data_url():
-  BASE_DATA_URL = os.path.join(os.getcwd(), "VincentLeV", "app", "data", "banned_books")
+  if "HOME" in os.environ and "streamlit" in os.environ["HOME"]:
+    BASE_DATA_URL = os.path.join(os.getcwd(), "VincentLeV", "app", "data", "banned_books")
+  else:
+    BASE_DATA_URL = os.path.join(os.getcwd(), "data", "banned_books")
   return BASE_DATA_URL
