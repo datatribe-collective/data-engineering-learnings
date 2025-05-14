@@ -22,6 +22,8 @@ This capstone project demonstrates how to ochestrate the process of scraping PEN
 
 Step 4 is redundant in this project since I load the using the CSV files but I want to include this so that the project will be scalable later.
 
+![Diagram](./banned-books-pipeline-diagram.jpg)
+
 ---
 
 ## Project Structure
