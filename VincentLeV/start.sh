@@ -30,7 +30,7 @@ POSTGRES_DB=${POSTGRES_DB:-postgres}
 prompt_input "Enter airflow db (optional): " AIRFLOW_DB
 AIRFLOW_DB=${AIRFLOW_DB:-airflow}
 
-prompt_input "Enter posgres db (optional): " POSTGRES_PORT
+prompt_input "Enter posgres port (optional): " POSTGRES_PORT
 POSTGRES_PORT=${POSTGRES_PORT:-5432}
 
 echo "PGADMIN_DEFAULT_EMAIL=$PGADMIN_DEFAULT_EMAIL" > .env
