@@ -1,0 +1,10 @@
+python-dotenv
+pandas
+streamlit
+plotly
+requests 
+beautifulsoup4
+apache-airflow
+apache-airflow-providers-common-sql
+apache-airflow-providers-postgres
+apache-airflow-providers-standard
