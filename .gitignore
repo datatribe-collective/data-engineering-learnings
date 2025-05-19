@@ -172,3 +172,7 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Big files to ignore for submission
+data/yellow_tripdata.duckdb
+taxi/Projects.zip
