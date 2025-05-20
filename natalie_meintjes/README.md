@@ -19,38 +19,26 @@ COVID-19 has affected countries differently over time. My goal was to analyze an
 
 ## Project Structure
 
-*Before make*
+<p align="center" width="100%">
+    <img width="33%" src="covid_project_workflow.png">
+</p>
+
 
 ```
-natalie_meintjes/
-├── Makefile
-├── README.md
+natalie_meintjes
+├── covid_project_workflow.png
 ├── dags
 │   └── covid_analysis_dag.py
-├── data
-│   └── owid_covid_data.csv
-├── notebooks
-│   └── covid_analysis.ipynb
-├── output
-└── scripts
-    ├── clean_data.py
-    └── run_notebook.py 
-```
-*After make*
-```
-natalie_meintjes/
 ├── Makefile
-├── README.md
-├── dags
-│   └── covid_analysis_dag.py
-├── data
-│   ├── cleaned_covid.csv
-│   └── owid_covid_data.csv
 ├── notebooks
 │   └── covid_analysis.ipynb
-└── scripts
-    ├── clean_data.py
-    └── run_notebook.py
+├── README.md
+├── scripts
+│   ├── clean_data.py
+│   └── run_notebook.py
+└── tests
+    └── test_clean_data.py
+
 ```
 
 ## Tools
