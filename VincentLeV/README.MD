@@ -42,6 +42,11 @@ VincentLeV/
 │   └── ...
 ├── dags/
 │   └── get_banned_books.py          # Airflow DAG that handles the data processing process
+├── tasks/
+│   └── banned_books_taks.py         # Airflow tasks that are used in get_banned_books DAG
+├── utils/
+│   ├── constants.py                 # Common constants that are used in util functions/tasks/DAG
+│   └── transform_banned_books.py    # Util functions that handle clean and transform the data
 ├── docker-compose.yaml
 ├── start.sh                         # App start script
 └── stop.sh                          # App end script
@@ -56,6 +61,8 @@ https://vincent-banned-books.streamlit.app/
 ```
 
 ## Setup and Run Locally
+
+### For Running the Project the First Time
 
 1. In the terminal, run these commands
    ```bash
@@ -83,9 +90,19 @@ PgAdmin is pre-loaded with a server under the name that you input for this promp
 
 Log into the DB with the password you provide in this prompt `Enter postgres password`, you will see that the data after this
 
+### For Running the Project Not the First Time
+
+In the terminal, run these commands
+```bash
+cd VincentLeV
+
+docker compose up -d
+```
+
 ## Stop the app
 
-In the terminal, run this script
+In the terminal, run this script when you are inside `VincentLeV` folder
 ```bash
+
 ./stop.sh
 ```
