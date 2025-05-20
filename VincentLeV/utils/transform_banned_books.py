@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-from scripts.constants import BASE_DATA_URL
+from utils.constants import BASE_DATA_URL
 
 def transform_data(file_path, header_row=None):
   possible_headers = ["Author,Title", "Title,Author"]
