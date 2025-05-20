@@ -20,7 +20,7 @@ COVID-19 has affected countries differently over time. My goal was to analyze an
 ## Project Structure
 
 <p align="center" width="100%">
-    <img width="33%" src="covid_project_workflow.png">
+    <img width="50%" src="covid_project_workflow.png">
 </p>
 
 
