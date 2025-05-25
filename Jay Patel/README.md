@@ -9,7 +9,6 @@ This project is a beginner-level data pipeline that processes and analyses retai
 To build a simple ETL (Extract, Transform, Load) pipeline using Python, BigQuery and Airflow that:
 - Cleans and transforms the dataset
 - Performs basic analysis
-- Generates outputs
 - Automates the workflow using Airflow
 
 ## Project Structure
