@@ -2,42 +2,44 @@
 
 # Zepto Retail Data Pipeline Project
 
-This project is a beginner-level data pipeline that processes and analyses retail data from Zepto, a fast 10-minute grocery delivery service.
+This project automates the end-to-end data pipeline for Zepto’s inventory data using Python scripts, Jupyter notebooks, and Apache Airflow. The pipeline includes data cleaning, analysis, and visualisation preparation, with orchestration handled by Airflow for automation and scheduling.
 
 ##  Objective
 
 To build a simple ETL (Extract, Transform, Load) pipeline using Python, BigQuery and Airflow that:
 - Cleans and transforms the dataset
 - Performs basic analysis
+- Generates outputs
 - Automates the workflow using Airflow
 
 ## Project Structure
 
 zepto_pipeline_project/
-├── data/ # Raw and processed data
-├── dags/ # Airflow DAGs
-├── notebooks/ # Jupyter notebooks for analysis
-├── output/ # Final output reports/graphs
-├── scripts/ # Python scripts for data processing
-├── README.md # Project documentation
-└── requirements.txt # Python dependencies
-
+├── dags/
+│   └── zepto_pipeline_dag.py           
+├── notebooks/
+│   ├── zepto_inventory.ipynb          
+├── scripts/
+│   ├── clean_data.py                  
+│   └── Run_Analysis_Notebook.py       
+├── output/                            
+├── README.md                        
+└── Makefile    
 
 ## Tools Used
 
-- Python (Pandas, Numpy, etc.)
-- Jupyter Notebook
-- Apache Airflow
-- Google BigQuery
+- Python (Pandas, Matplotlib, Seaborn, Sklearn, Numpy)
+- Jupyter Notebooks
+- Airflow
 
-##  Workflow Steps
+##  Analysis About
 
-1. Load Zepto dataset (Excel)
-2. Clean and transform data
-3. Analyse key metrics (e.g. discounts, stock-outs)
-4. Schedule and run via Airflow DAG
+- Discount 
+- Out of stock Items
+- Available Stock Items
 
 ##  Installation
 
 ```bash
-pip install -r requirements.txt
+
+
