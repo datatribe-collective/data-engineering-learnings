@@ -12,6 +12,15 @@ To build a simple ETL (Extract, Transform, Load) pipeline using Python, BigQuery
 - Generates outputs
 - Automates the workflow using Airflow
 
+## Project Workflow
+
+1. Datasource Zepto Inventory Dataset
+2. Download From Kaggle/Git
+3. Run Python script to clean and load the data 
+4. Visualising the results in Jupyter Notebook
+
+
+
 ## Project Structure
 ```
 zepto_pipeline_project/
@@ -36,12 +45,10 @@ zepto_pipeline_project/
 
 ##  Analysis About
 
-- Discount 
-- Out of stock Items
-- Available Stock Items
+- Which items have the highest Discounts 
+- Which items are out of stock?
+- Which items have more Available Stock in inventory
 
-##  Installation
 
-```bash
 
 
