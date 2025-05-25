@@ -13,7 +13,8 @@ To build a simple ETL (Extract, Transform, Load) pipeline using Python, BigQuery
 - Automates the workflow using Airflow
 
 ## Project Structure
-``` zepto_pipeline_project/
+```
+zepto_pipeline_project/
 ├── dags/
 │ └── zepto_pipeline_dag.py
 ├── notebooks/
@@ -25,7 +26,7 @@ To build a simple ETL (Extract, Transform, Load) pipeline using Python, BigQuery
 ├── data/
 │ └── zepto_data_cleaned.csv
 ├── Makefile
-├── README.md ``` 
+├── README.md 
 
 ## Tools Used
 
