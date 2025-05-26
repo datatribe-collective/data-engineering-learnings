@@ -14,10 +14,7 @@ To build a simple ETL (Extract, Transform, Load) pipeline using Python, BigQuery
 
 ## Project Workflow
 
-1. Datasource Zepto Inventory Dataset
-2. Download From Kaggle/Git
-3. Run Python script to clean and load the data 
-4. Visualising the results in Jupyter Notebook
+![image](https://github.com/user-attachments/assets/22e6bec3-cfa9-48ae-b4f8-27c0405455d8)
 
 
 
@@ -36,6 +33,8 @@ zepto_pipeline_project/
 │ └── zepto_data_cleaned.csv
 ├── Makefile
 ├── README.md 
+```
+
 
 ## Tools Used
 
