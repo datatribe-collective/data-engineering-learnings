@@ -1,0 +1,123 @@
+name: ETL CI/CD
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  ci:
+    name: CI - Lint, Terraform Check, and Plan
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.4.6
+          terraform_wrapper: false
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Set Terraform Environment Variables
+        run: |
+          echo "TF_VAR_project_id=${{ secrets.PROJECT_ID }}" >> $GITHUB_ENV
+          echo "TF_VAR_bucket_name=${{ secrets.BUCKET_NAME }}" >> $GITHUB_ENV
+          echo "TF_VAR_bucket_location=${{ secrets.BUCKET_LOCATION }}" >> $GITHUB_ENV
+          echo "TF_VAR_citibike_composer_name=${{ secrets.citibike_composer_name }}" >> $GITHUB_ENV
+          echo "TF_VAR_composer_region=${{ secrets.COMPOSER_REGION }}" >> $GITHUB_ENV
+          echo "TF_VAR_composer_service_account=${{ secrets.COMPOSER_SERVICE_ACCOUNT }}" >> $GITHUB_ENV
+
+      - name: Terraform Format Check
+        run: |
+          cd terraform
+          terraform fmt -check -recursive
+
+      - name: Terraform Init
+        run: |
+          cd terraform
+          terraform init
+
+      - name: Terraform Validate
+        run: |
+          cd terraform
+          terraform validate
+
+      - name: Terraform Plan
+        run: |
+          cd terraform
+          terraform plan -input=false
+
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+
+      - name: Install Dependencies
+        run: poetry install
+
+      - name: Python Lint
+        run: poetry run flake8 .
+
+  cd:
+    name: CD - Deploy Infra and DAGs
+    needs: ci
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.4.6
+          terraform_wrapper: false
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Set Terraform Environment Variables
+        run: |
+          echo "TF_VAR_project_id=${{ secrets.PROJECT_ID }}" >> $GITHUB_ENV
+          echo "TF_VAR_bucket_name=${{ secrets.BUCKET_NAME }}" >> $GITHUB_ENV
+          echo "TF_VAR_bucket_location=${{ secrets.BUCKET_LOCATION }}" >> $GITHUB_ENV
+          echo "TF_VAR_citibike_composer_name=${{ secrets.citibike_composer_name }}" >> $GITHUB_ENV
+          echo "TF_VAR_composer_region=${{ secrets.COMPOSER_REGION }}" >> $GITHUB_ENV
+          echo "TF_VAR_composer_service_account=${{ secrets.COMPOSER_SERVICE_ACCOUNT }}" >> $GITHUB_ENV
+
+      - name: Terraform Init
+        run: |
+          cd terraform
+          terraform init
+
+      - name: Terraform Apply
+        run: |
+          cd terraform
+          terraform apply -auto-approve
+
+      - name: Get Composer Bucket Name
+        run: |
+          cd terraform
+          COMPOSER_BUCKET=$(terraform output -raw composer_bucket_name 2>/dev/null || echo "")
+          echo "COMPOSER_BUCKET=$COMPOSER_BUCKET" >> $GITHUB_ENV
+
+      - name: Deploy DAGs to Composer
+        run: |
+          gcloud storage cp --recursive dags gs://$COMPOSER_BUCKET/
+
+      - name: Deploy Plugins to Composer
+        run: |
+          gcloud storage cp --recursive plugins gs://$COMPOSER_BUCKET/
+
+      - name: Deploy Data to Composer
+        run: |
+          gcloud storage cp --recursive data gs://$COMPOSER_BUCKET/
