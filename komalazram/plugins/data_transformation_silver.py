@@ -22,6 +22,7 @@ def raw_transformation(**kwargs):
         gcs_hook.download(bronze_bucket, latest_file).decode("utf-8")
     )
 
+    # Function to flatten the JSON structure
     def flatten_json(data):
         flattened = []
         network = data["network"]
@@ -50,6 +51,7 @@ def raw_transformation(**kwargs):
     snapshot_time = datetime.now(timezone.utc)
     df["snapshot_time"] = snapshot_time
 
+    # Convert timestamp to datetime and handle errors
     try:
         if df["timestamp"].dtype.kind in "iuf":
             df["timestamp"] = pd.to_datetime(
@@ -73,11 +75,13 @@ def raw_transformation(**kwargs):
     except Exception as e:
         raise ValueError(f"Timestamp conversion failed: {str(e)}")
 
+    # Convert columns to appropriate types
     numeric_cols = ["free_bikes", "empty_slots", "ebikes", "latitude", "longitude"]
     df[numeric_cols] = df[numeric_cols].apply(pd.to_numeric, errors="coerce")
     bool_cols = ["has_ebikes", "renting", "returning"]
     df[bool_cols] = df[bool_cols].astype(bool)
 
+    # Fill null values with defaults
     df.fillna(
         {
             "free_bikes": 0,
@@ -89,9 +93,7 @@ def raw_transformation(**kwargs):
         inplace=True,
     )
 
-    df["is_station_empty"] = df["free_bikes"] == 0
-    df["is_station_full"] = df["empty_slots"] == 0
-
+    # Convert to Parquet format
     parquet_buffer = io.BytesIO()
     df.to_parquet(
         parquet_buffer,
@@ -109,6 +111,7 @@ def raw_transformation(**kwargs):
         data=parquet_buffer.getvalue(),
     )
 
+    # Upload history data
     gcs_hook.upload(
         bucket_name=silver_bucket,
         object_name=f"citi-bike/history/data_{timestamp_str}.parquet",

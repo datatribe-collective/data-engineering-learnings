@@ -29,7 +29,7 @@ jobs:
       - name: Set Terraform Environment Variables
         run: |
           echo "TF_VAR_project_id=${{ secrets.PROJECT_ID }}" >> $GITHUB_ENV
-          echo "TF_VAR_bucket_name=${{ secrets.BUCKET_NAME }}" >> $GITHUB_ENV
+          echo "TF_VAR_bucket_names=${{ secrets.BUCKET_NAME }}" >> $GITHUB_ENV
           echo "TF_VAR_bucket_location=${{ secrets.BUCKET_LOCATION }}" >> $GITHUB_ENV
           echo "TF_VAR_citibike_composer_name=${{ secrets.citibike_composer_name }}" >> $GITHUB_ENV
           echo "TF_VAR_composer_region=${{ secrets.COMPOSER_REGION }}" >> $GITHUB_ENV
@@ -88,7 +88,7 @@ jobs:
       - name: Set Terraform Environment Variables
         run: |
           echo "TF_VAR_project_id=${{ secrets.PROJECT_ID }}" >> $GITHUB_ENV
-          echo "TF_VAR_bucket_name=${{ secrets.BUCKET_NAME }}" >> $GITHUB_ENV
+          echo "TF_VAR_bucket_names=${{ secrets.BUCKET_NAME }}" >> $GITHUB_ENV
           echo "TF_VAR_bucket_location=${{ secrets.BUCKET_LOCATION }}" >> $GITHUB_ENV
           echo "TF_VAR_citibike_composer_name=${{ secrets.citibike_composer_name }}" >> $GITHUB_ENV
           echo "TF_VAR_composer_region=${{ secrets.COMPOSER_REGION }}" >> $GITHUB_ENV

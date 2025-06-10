@@ -12,17 +12,15 @@ WHEN MATCHED AND S.row_num = 1 THEN
     ebikes = S.ebikes,
     renting = S.renting,
     returning = S.returning,
-    has_ebikes = S.has_ebikes,
-    is_station_empty = S.is_station_empty,
-    is_station_full = S.is_station_full
+    has_ebikes = S.has_ebikes
 WHEN NOT MATCHED AND S.row_num = 1 THEN
   INSERT (
     network_id, network_name, station_id, latitude, longitude, timestamp,
     free_bikes, empty_slots, extra_uid, renting, returning, has_ebikes,
-    ebikes, is_station_empty, is_station_full
+    ebikes
   )
   VALUES (
     network_id, network_name, station_id, latitude, longitude, timestamp,
     free_bikes, empty_slots, extra_uid, renting, returning, has_ebikes,
-    ebikes, is_station_empty, is_station_full
+    ebikes
   );

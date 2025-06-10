@@ -11,9 +11,7 @@ CREATE TABLE IF NOT EXISTS `citi-bike-459310.lake_silver.master_bike_station_sta
   renting BOOL,
   returning BOOL,
   has_ebikes BOOL,
-  ebikes INT64,
-  is_station_empty BOOL,
-  is_station_full BOOL
+  ebikes INT64
 )
 PARTITION BY DATE(timestamp)
 CLUSTER BY station_id;

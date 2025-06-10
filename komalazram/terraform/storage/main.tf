@@ -1,6 +1,6 @@
 resource "google_storage_bucket" "storage-buckets" {
-  name          = var.bucket_name
-  location      = var.bucket_location
+  count         = length(var.bucket_names)
+  name          = var.bucket_names[count.index]
   project       = var.project_id
   force_destroy = true
 

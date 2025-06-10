@@ -12,8 +12,6 @@ CREATE TABLE IF NOT EXISTS `citi-bike-459310.lake_silver._staging_master_bike_st
   returning BOOL,
   has_ebikes BOOL,
   ebikes INT64,
-  is_station_empty BOOL,
-  is_station_full BOOL,
   snapshot_time TIMESTAMP
 )
 PARTITION BY DATE(timestamp)
