@@ -22,7 +22,7 @@ The pipeline takes a weekly snapshot and provides the updated data. It follows *
 
 ### Silver Layer
 - Cleans and flattens raw JSON data using Pandas, handling timestamp formats, missing values, and data type conversions.
-- Writes cleaned data to a GCS Silver bucket and loads it into a BigQuery staging table with additional derived columns like is_station_empty and is_station_full.
+- Writes cleaned data to a GCS Silver bucket and loads it into a BigQuery staging table.
 - Uses a MERGE operation to update the master BigQuery table with only new or changed records from the staging table.
 
 ### Gold Layer
