@@ -1,0 +1,45 @@
+name: Build and Push Images
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+env:
+  IMAGE_PREFIX: ${{ secrets.DOCKER_IMAGE_PREFIX }}
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # [Optional] Decode and save GCP credentials for use in Docker build
+      # This step is skipped unless you set the GCP_CREDENTIALS_JSON secret
+      # - name: Decode and save GCP credentials
+      #   if: ${{ secrets.GCP_CREDENTIALS_JSON != '' }}
+      #   run: |
+      #     mkdir -p creds
+      #     echo "${{ secrets.GCP_CREDENTIALS_JSON }}" | base64 -d > creds/gcp_service_account.json
+
+      # Log in to Docker Hub
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      
+      # Build and Push Airflow
+      - name: Build Airflow Image
+        run: docker build -t $IMAGE_PREFIX/nyc-taxi-airflow:latest ./airflow_pipeline
+
+      - name: Push Airflow Image
+        run: docker push $IMAGE_PREFIX/nyc-taxi-airflow:latest
+
+      # Build and Push Streamlit
+      - name: Build Streamlit Image
+        run: docker build -t $IMAGE_PREFIX/nyc-taxi-streamlit:latest ./streamlit_app
+
+      - name: Push Streamlit Image
+        run: docker push $IMAGE_PREFIX/nyc-taxi-streamlit:latest

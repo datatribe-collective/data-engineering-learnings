@@ -1,0 +1,7 @@
+apache-airflow==2.8.1
+pyspark==3.5.2
+google-cloud-bigquery==3.30.0
+google-auth==2.40.2
+pyyaml
+dotenv
+db-dtypes

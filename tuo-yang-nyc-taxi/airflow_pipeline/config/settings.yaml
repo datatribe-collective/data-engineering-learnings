@@ -1,0 +1,58 @@
+# settings.yaml
+# ------------------------------------------------
+# Data Ingestion Configuration
+# ------------------------------------------------
+data_config:
+  year: 2023
+  months: [1, 2, 3]
+  output_prefix: "yellow_tripdata"
+
+# ------------------------------------------------
+# Spark Settings
+# ------------------------------------------------
+spark_config:
+  app_name: "YellowTaxiCleaning"
+  master: "local[*]"
+
+# ------------------------------------------------
+# BigQuery Upload
+# ------------------------------------------------
+bigquery_config:
+  project_id: ${BQ_PROJECT_ID}
+  dataset: ${BQ_DATASET}
+  table: ${BQ_TABLE}
+  summary_table: ${BQ_SUMMARY_TABLE}
+
+# ------------------------------------------------
+# Google Credentials
+# ------------------------------------------------
+google_application_credentials: ${GOOGLE_APPLICATION_CREDENTIALS_PATH}
+
+# ------------------------------------------------
+# Parquet Output
+# ------------------------------------------------
+parquet_output:
+  path: "data/processed"
+
+# ------------------------------------------------
+# Temp Parquet Download Path
+# ------------------------------------------------
+tmp_parquet_path: "data/tmp"
+
+# ------------------------------------------------
+# SQL File for Summary Table
+# ------------------------------------------------
+sql_file_path: "sql/create_trip_summary_hourly.sql"
+
+# ------------------------------------------------
+# UI / Plotting Config
+# ------------------------------------------------
+default_granularities:
+  - "Hourly"
+  - "Daily"
+  - "Weekly"
+
+plotly_template: "plotly_white"
+map_center:
+  lat: 40.7128
+  lon: -74.0060

@@ -1,0 +1,23 @@
+# Ignore environment variables
+.env
+
+# Ignore all credentials
+creds/*.json
+!creds/*.example.json
+
+# Ignore all data inside folders but keep the folder itself
+airflow_pipeline/data/**/*
+!airflow_pipeline/data/.gitkeep
+!airflow_pipeline/data/processed/.gitkeep
+!airflow_pipeline/data/tmp/.gitkeep
+
+# Ignore all log content but keep the folder
+airflow_pipeline/logs/**/*
+!airflow_pipeline/logs/.gitkeep
+
+# Ignore Jupyter notebook checkpoints everywhere
+**/.ipynb_checkpoints/
+
+# Ignore Artifacts
+artifacts/
+
