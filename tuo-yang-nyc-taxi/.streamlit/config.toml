@@ -1,0 +1,17 @@
+[theme]
+primaryColor = "#0d6efd"
+backgroundColor = "#f8f9fa"
+secondaryBackgroundColor = "#ffffff"
+textColor = "#212529"
+font = "sans serif"
+
+[server]
+headless = true
+enableCORS = false
+
+[client]
+showSidebarNavigation = true
+toolbarMode = "minimal"
+
+[ui]
+hidePageFromNavigation = ["app"]

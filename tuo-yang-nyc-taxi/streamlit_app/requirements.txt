@@ -1,0 +1,10 @@
+streamlit==1.45.1
+pandas==2.2.3
+plotly==6.1.2
+google-cloud-bigquery==3.30.0
+google-auth==2.40.2
+pydeck==0.9.1
+pyyaml
+dotenv
+db-dtypes
+flake8

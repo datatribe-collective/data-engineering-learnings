@@ -1,0 +1,45 @@
+services:
+  airflow-apiserver:
+    build:
+      context: ./airflow_pipeline
+      dockerfile: Dockerfile
+
+  airflow-scheduler:
+    build:
+      context: ./airflow_pipeline
+      dockerfile: Dockerfile
+
+  airflow-dag-processor:
+    build:
+      context: ./airflow_pipeline
+      dockerfile: Dockerfile
+
+  airflow-worker:
+    build:
+      context: ./airflow_pipeline
+      dockerfile: Dockerfile
+
+  airflow-triggerer:
+    build:
+      context: ./airflow_pipeline
+      dockerfile: Dockerfile
+
+  airflow-init:
+    build:
+      context: ./airflow_pipeline
+      dockerfile: Dockerfile
+
+  airflow-cli:
+    build:
+      context: ./airflow_pipeline
+      dockerfile: Dockerfile
+
+  flower:
+    build:
+      context: ./airflow_pipeline
+      dockerfile: Dockerfile
+
+  streamlit:
+    build:
+      context: ./streamlit_app
+      dockerfile: Dockerfile
